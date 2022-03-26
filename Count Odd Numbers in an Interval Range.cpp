@@ -1,4 +1,9 @@
-// Method:
+Link: https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/discuss/1800390/c-explanation-time-o1-space-o1-0ms-100-faster 
+
+
+C++ Explanation | Time O(1) | Space O(1) | 0ms & 100% Faster
+
+Method:
 //
 // * Firstly we find the average of high and low and save it in a variable k
 // * Case 1:
@@ -25,14 +30,14 @@
 // * Thus all cases are handled
 // * Finally, return k
 
-// * Time Complexity: O(1)
+Time Complexity: O(1)
 //          * As, we are only finding an average between two given numbers
 //          * Hence, constant Time complexity
-// * Space Complexity: O(1)
+Space Complexity: O(1)
 //          * As, we have created only one extra variable to store the result
 //          * Hence, constant Space complexity
 
-// Code:
+Code:
 
 class Solution
 {
