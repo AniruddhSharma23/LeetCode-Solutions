@@ -1,3 +1,5 @@
+Link: https://leetcode.com/problems/find-all-duplicates-in-an-array/discuss/1854506/C++-Solution-oror-Time-O(n)-oror-Constant-extra-space-oror-Explained-oror-Short
+
 C++ Solution || Time O(n) || Constant extra space || Explained || Short
 
 **Method:**
@@ -23,14 +25,18 @@ public:
     vector<int> findDuplicates(vector<int>& nums) {
         vector<int>v;
         for(int i=0;i<nums.size();i++){
-            if(nums[abs(nums[i])-1]<0){
-                v.push_back(abs(nums[i]));
-            }else{
-                nums[abs(nums[i])-1]*=-1;
-            }     
+    if (nums[abs(nums[i]) - 1] < 0)
+    {
+        v.push_back(abs(nums[i]));
+    }
+    else
+    {
+        nums[abs(nums[i]) - 1] *= -1;
+    }     
         }
         return v;
-    }
-};
+}
+}
+;
 ```
 Happy Coding :-)
