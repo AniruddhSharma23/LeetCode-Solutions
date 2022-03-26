@@ -1,3 +1,4 @@
+Link: https://leetcode.com/problems/concatenation-of-array/discuss/1797681/Concatenation-of-Array-in-C++
 Concatenation of Array in C++
 
 **Method:**
