@@ -1,4 +1,4 @@
-
+Link: https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/discuss/1797788/C++-Solution-using-XOR
 C++ Solution using XOR
 
     // Method:
