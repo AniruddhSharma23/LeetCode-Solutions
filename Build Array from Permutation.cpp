@@ -1,3 +1,5 @@
+Link: https://leetcode.com/problems/build-array-from-permutation/discuss/1797703/C++-Explanation-or-Time-O(n)
+
 C++ Explanation | Time O(n)
 
 **Method:**
