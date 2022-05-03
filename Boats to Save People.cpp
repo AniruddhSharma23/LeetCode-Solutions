@@ -1,3 +1,4 @@
+Link: https://leetcode.com/problems/boats-to-save-people/discuss/1878497/C++-Solution-oror-Two-Pointers-Approach-oror-Explained-oror-Simple-and-Short
 Method :
     //
     // We sort the given array
