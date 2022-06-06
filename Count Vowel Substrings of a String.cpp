@@ -1,34 +1,49 @@
 class Solution
 {
 public:
-    int countVowelSubstrings(string word)
+    int count(string s)
     {
-        int j = 0, k = 0, vowels = 0, ans = 0;
-        unordered_map<char, int> mp;
-        mp['a'] = 0, mp['e'] = 0, mp['i'] = 0, mp['o'] = 0, mp['u'] = 0;
-        for (int i = 0; i < word.size(); i++)
+        int a = 0;
+        map<char, int> mp;
+        int st = 0;
+        int n = s.length();
+        for (int i = 0; i < n; i++)
         {
-            if (mp.find(word[i]) != mp.end()) // vowel found
+            mp[s[i]]++;
+
+            while (mp['a'] > 0 && mp['e'] > 0 && mp['i'] > 0 && mp['o'] > 0 && mp['u'] > 0)
             {
-                vowels += (++mp[word[i]] == 1); // vowels increase only if a new vowel is found
-
-                // Now we are looping k forward until there exists a valid all vowel substr b/w k and i :-
-                while (vowels == 5)
-                {
-                    vowels -= (--mp[word[k++]] == 0);
-                } // vowels decreases only if all occurence of a vowel is eliminated
-
-                ans += (k - j); // because with the valid all vowel substr b/w k and i, every letter b/w k and j can also be associated to make a unique substring..
-                // so adding all such possibilities to answer
-            }
-            else // consonant found
-            {    // resetting all vowel frequencies once any non vowel is found
-                mp['a'] = mp['e'] = mp['i'] = mp['o'] = mp['u'] = 0;
-                vowels = 0;
-                j = k = i + 1;
+                a += n - i;
+                mp[s[st]]--;
+                st += 1;
             }
         }
+        return a;
+    }
+    int countVowelSubstrings(string word)
+    {
+        int k = 0;
+        string t = "";
+        for (char c : word)
+        {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+            {
+                t += c;
+            }
+            else
+            {
+                if (t.length() > 0)
+                {
+                    k += count(t);
+                }
 
-        return ans;
+                t = "";
+            }
+        }
+        if (t.length() > 0)
+        {
+            k += count(t);
+        }
+        return k;
     }
 };
