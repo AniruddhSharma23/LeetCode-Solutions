@@ -11,41 +11,31 @@
 class Solution
 {
 public:
-    ListNode *rev(ListNode *head)
+    ListNode *reverseBetween(ListNode *head, int l, int r)
     {
-        if (head == NULL || head->next == NULL)
+        if (head == NULL || l == r)
         {
             return head;
         }
-        Node *prev = NULL;
-        Node *curr = head;
-        while (curr != NULL)
-        {
-            Node *temp = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = temp;
-        }
-        return prev;
-    }
-    ListNode *reverseBetween(ListNode *head, int left, int right)
-    {
+        ListNode *start = new ListNode(-1);
+        start->next = head;
+        ListNode *prev = start;
         ListNode *curr = head;
-        ListNode *prev = curr;
-        while (curr != NULL && left > 1)
+        while (l > 1)
         {
             prev = curr;
             curr = curr->next;
-            left--;
+            l--;
+            r--;
         }
-        ListNode *c1 = curr;
-        int k = right - left;
-        while (k--)
+        while (r > 1)
         {
+            ListNode *temp = curr->next;
+            curr->next = temp->next;
+            temp->next = prev->next;
+            prev->next = temp;
+            r--;
         }
-        ListNode *nc = reverse(curr);
-        prev->next = nc;
-
-        curr = nc;
+        return start->next;
     }
 };
