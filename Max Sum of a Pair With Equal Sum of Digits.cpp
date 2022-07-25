@@ -13,26 +13,17 @@ public:
     }
     int maximumSum(vector<int> &nums)
     {
-        unordered_map<int, priority_queue<int, vector<int>, greater<int>>> mp;
+        unordered_map<int, priority_queue<int>> mp;
         for (auto x : nums)
         {
             int k = digitSum(x);
-            if (mp[k].size() == 2)
-            {
-                if (mp[k].top() < x)
-                {
-                    mp[k].pop();
-                    mp[k].push(x);
-                }
-            }
-            else
-                mp[k].push(x);
+            mp[k].push(x);
         }
         int sum = -1;
         for (auto x : mp)
         {
             auto pq = x.second;
-            if (pq.size() == 2)
+            if (pq.size() >= 2)
             {
                 int k = pq.top();
                 pq.pop();

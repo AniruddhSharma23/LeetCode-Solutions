@@ -1,3 +1,100 @@
+// efficient:
+class Solution
+{
+public:
+    typedef pair<string, int> pi;
+    vector<int> smallestTrimmedNumbers(vector<string> &nums, vector<vector<int>> &queries)
+    {
+        vector<int> ans;
+        int n = nums.size();
+        for (auto &q : queries)
+        {
+            vector<pi> v;
+            for (int i = 0; i < n; i++)
+            {
+                int t = q[1];
+                int n1 = nums[i].size();
+                string s = nums[i].substr(n1 - t);
+                v.push_back({s, i});
+            }
+            sort(v.begin(), v.end());
+            int k = q[0];
+            ans.push_back(v[k - 1].second);
+        }
+        return ans;
+    }
+};
+
+// min-heap
+class Solution
+{
+public:
+    typedef pair<string, int> pi;
+    vector<int> smallestTrimmedNumbers(vector<string> &nums, vector<vector<int>> &queries)
+    {
+        vector<int> ans;
+        int n = nums.size();
+        for (auto &q : queries)
+        {
+            priority_queue<pi, vector<pi>, greater<pi>> pq;
+            for (int i = 0; i < n; i++)
+            {
+                int t = q[1];
+                int n1 = nums[i].size();
+                string s = nums[i].substr(n1 - t);
+                pq.push({s, i});
+            }
+            int k = q[0];
+            k--;
+            while (k--)
+                pq.pop();
+            auto x = pq.top().second;
+            ans.push_back(x);
+        }
+        return ans;
+    }
+};
+
+// max-heap
+
+class Solution
+{
+public:
+    typedef pair<string, int> pi;
+    vector<int> smallestTrimmedNumbers(vector<string> &nums, vector<vector<int>> &queries)
+    {
+        vector<int> ans;
+        int n = nums.size();
+        for (auto &q : queries)
+        {
+            priority_queue<pi> pq;
+            for (int i = 0; i < n; i++)
+            {
+                int t = q[1];
+                int k = q[0];
+                int n1 = nums[i].size();
+                string s = nums[i].substr(n1 - t);
+                auto x = pq.top().first;
+                if (pq.size < k)
+                    pq.push({s, i});
+                else
+                {
+                    if (x > s)
+                    {
+                        pq.pop();
+                        pq.push({s, i});
+                    }
+                }
+            }
+            auto x = pq.top().second;
+            ans.push_back(x);
+        }
+        return ans;
+    }
+};
+
+// naive:
+
 class Solution
 {
 public:
