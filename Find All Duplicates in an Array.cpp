@@ -40,3 +40,31 @@ public:
 ;
 ```
 Happy Coding :-)
+
+
+class Solution
+{
+public:
+    void cyclesort(vector<int> &nums)
+    {
+        int n = nums.size();
+        int i = 0;
+        while (i < n)
+        {
+            int j = nums[i] - 1;
+            if (nums[i] != nums[j])
+                swap(nums[i], nums[j]);
+            else
+                i++;
+        }
+    }
+    vector<int> findDuplicates(vector<int> &nums)
+    {
+        vector<int> v;
+        cyclesort(nums);
+        for (int i = 0; i < n; i++)
+            if (nums[i] - 1 != i)
+                v.push_back(nums[i]);
+        return v;
+    }
+};
