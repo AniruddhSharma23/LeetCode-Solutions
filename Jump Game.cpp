@@ -5,7 +5,8 @@ Method:
     we follow the tabulation method
     create a dp boolean array such that
     dp[i] = denotes whether you can reach the end from this index or not
-    now at every ith element we can take 1 to nums[i] number of steps so we check if there is any index between 1 to nums[i] where the condition is true if it is then we set this dp[i] as true as it's possible to reach the end from this index
+    now at every ith element we can take 1 to nums[i] number of steps so we check if there is any index between 1 to nums[i] where the condition is true if it is
+    then we set this dp[i] as true as it's possible to reach the end from this index
     at last we return dp[0] because we want to know whether we can reach the last index starting from the first index
 
 Time Complexity: O(n)
